@@ -51,5 +51,8 @@ namespace GalloFlix.Models;
         public string HourDuration { get {
             return TimeSpan.FromMinutes(Duration).ToString(@"%h'h 'mm'min'");
         }}
-
     }
+
+
+
+    
