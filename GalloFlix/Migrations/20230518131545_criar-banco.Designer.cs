@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GalloFlix.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230511132025_criar-banco")]
+    [Migration("20230518131545_criar-banco")]
     partial class criarbanco
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -169,6 +169,29 @@ namespace GalloFlix.Migrations
                         .HasDatabaseName("RoleNameIndex");
 
                     b.ToTable("Roles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "e5c1d4de-be3a-491d-a568-58d0e296fb7e",
+                            ConcurrencyStamp = "6e2c9e72-15eb-4dc8-b3e0-47eb85a8798f",
+                            Name = "Administrador",
+                            NormalizedName = "ADMINISTRADOR"
+                        },
+                        new
+                        {
+                            Id = "8d859807-f4fa-474f-a2fb-1e6f4c8a73c5",
+                            ConcurrencyStamp = "13ae3033-87e3-4c9b-91bf-fb3295fb250c",
+                            Name = "Moderador",
+                            NormalizedName = "MODERADOR"
+                        },
+                        new
+                        {
+                            Id = "175388d1-3e78-41a7-a56a-5dec5aee194a",
+                            ConcurrencyStamp = "dddc0e13-ba33-462f-8b8d-2ea1017bf126",
+                            Name = "Usuário",
+                            NormalizedName = "USUÁRIO"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -322,6 +345,13 @@ namespace GalloFlix.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("UserRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = "da38077a-02e1-4264-b752-67d2fc00d25f",
+                            RoleId = "e5c1d4de-be3a-491d-a568-58d0e296fb7e"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
@@ -360,6 +390,28 @@ namespace GalloFlix.Migrations
                         .HasColumnType("varchar(200)");
 
                     b.HasDiscriminator().HasValue("AppUser");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "da38077a-02e1-4264-b752-67d2fc00d25f",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "4579c770-8fd0-496f-8467-520706ccefde",
+                            Email = "gallojunior@gmail.com",
+                            EmailConfirmed = true,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "GALLOJUNIOR@GMAIL.COM",
+                            NormalizedUserName = "GALLOJUNIOR",
+                            PasswordHash = "AQAAAAEAACcQAAAAEMYxb23I7Zcs7W9eCJ8DEB2T8CYr31kb2+PNXNtkDESkwzg3u5smKjiJRF8cSaySLA==",
+                            PhoneNumber = "1440028922",
+                            PhoneNumberConfirmed = true,
+                            SecurityStamp = "088fbe1e-e304-4952-a6bc-db6648194432",
+                            TwoFactorEnabled = false,
+                            UserName = "GalloJunior",
+                            DateOfBirth = new DateTime(1981, 8, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "José Antonio Gallo Junior",
+                            ProfilePicture = "img/users/avatar.png"
+                        });
                 });
 
             modelBuilder.Entity("GalloFlix.Models.MovieComment", b =>
