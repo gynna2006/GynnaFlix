@@ -22,3 +22,5 @@ dotnet ef database update
 //Consertar o dotnet watch run //
 dotnet dev-certs https --trust
 
+//operadores lógicos
+&& - e ||-ou !-não !=- 
