@@ -3,12 +3,16 @@
     ViewData["Title"] = "Login";
 }
 
+@section Styles {
+  <link rel="stylesheet" href="~/css/login.css">
+}
+
 <div class="text-center">
     <h1 class="display-4">Login</h1>
 </div>
 @*TagHelper - Auxiliar de tag *@
-<form method="post" class="col-md-6 offset-md-3">
-    <div asp-validation-summary="All" class="text-danger"></div>
+<form method="post" class="col-md-6 col-lg-4 offset-md-3 offset-lg-4 mt-5">
+    <div asp-validation-summary="All" class="text-danger" hidden></div>
   <div class="mb-3">
     <label asp-for="Email" class="form-label"></label>
     <input asp-for="Email" class="form-control">
@@ -23,9 +27,30 @@
     <input asp-for="RememberMe" class="form-check-input">
     <label asp-for="RememberMe" class="form-check-label"></label>
   </div>
-  <button type="submit" class="btn btn-primary">Entrar</button>
+  <button type="submit" class="w-100 btn btn-primary">Entrar</button>
+
+  <a asp-action="Forget" class="w-100 d-block text-center forgetPassword mt-3">Esqueceu sua Senha?</a>
+
+  <div class="border-text"></div>
+
+  <a asp-action="Register" class="w-100 btn btn-success mt2">Criar Conta</a>
+
 </form>
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial"></partial>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+      let mensagemErro = '';
+      $(".validation-summary-errors ul li").each(function() {
+        mensagemErro += $(this).text() + '<br/>'
+      });
+      if (mensagemErro != '') {
+        Swal.fire(
+          'Acesso Negado',
+          mensagemErro,
+          'error'
+        );
+      }
+    </script>
 }
