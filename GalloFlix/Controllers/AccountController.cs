@@ -7,7 +7,6 @@ using System.Net.Mail;
 
 namespace GalloFlix.Controllers;
 
-    [Authorize(Roles = "Administrador")]
     public class AccountController : Controller
     {
         private readonly ILogger<AccountController> _logger;
@@ -23,13 +22,13 @@ namespace GalloFlix.Controllers;
             _userManager = userManager;
         }
 
+        [Authorize(Roles = "Administrador")]
         public IActionResult Index()
         {
             return View();
         }
 
         [HttpGet]
-        [AllowAnonymous]
         public IActionResult Login(string returnUrl)
         {
             LoginDto login = new();
@@ -38,7 +37,6 @@ namespace GalloFlix.Controllers;
         }
 
         [HttpPost]
-        [AllowAnonymous]
         public async Task<IActionResult> Login(LoginDto login)
         {
             // Verificar o modelo e fazer o login
@@ -70,7 +68,11 @@ namespace GalloFlix.Controllers;
             return View(login);
         }
 
-
+        [HttpGet]
+        public IActionResult Register()
+        {
+            return View();
+        }
 
         private bool IsValidEmail(string email)
         {
