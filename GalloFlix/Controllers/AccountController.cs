@@ -7,6 +7,7 @@ using System.Net.Mail;
 using GalloFlix.Services;
 using Microsoft.AspNetCore.WebUtilities;
 using System.Text;
+using System.Text.Encodings.Web;
 
 namespace GalloFlix.Controllers;
 
@@ -122,10 +123,30 @@ namespace GalloFlix.Controllers;
                         new { userId = userId, code = code },
                         protocol: Request.Scheme
                     );
-                    
+
+                await _userManager.AddToRoleAsync(user , "Usuário");
+
+                await _emailSender.SendEmailAsync(
+                    register.Email, "GalloFlix - Criação de Conta",
+                    $"Por favor, confirme a criação da sua conta <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicando aqui</a>"
+                );
+
+                    return RedirectToAction("RegisterConfirmation");
+                }
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError(
+                        string.Empty, error.Description
+                    );
                 }
             }
             return View(register);
+        }
+
+        [HttpGet]
+        public IActionResult RegisterConfirmation()
+        {
+            return View();
         }
 
         private bool IsValidEmail(string email)
