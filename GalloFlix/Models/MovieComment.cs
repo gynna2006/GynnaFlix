@@ -8,6 +8,7 @@ namespace GalloFlix.Models;
     public class MovieComment
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         [Required]
         public int MovieId { get; set; }

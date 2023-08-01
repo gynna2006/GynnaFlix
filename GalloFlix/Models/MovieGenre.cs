@@ -16,14 +16,4 @@ namespace GalloFlix.Models;
         [ForeignKey("GenreId")]
         public Genre Genre { get; set; }
         
-
-
-
-
-
-
-
-
-
-
     }

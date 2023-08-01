@@ -18,7 +18,4 @@ namespace GalloFlix.Models;
 
         public ICollection<MovieComment> Comments { get; set; }
         public ICollection<MovieRating> Ratings { get; set; }
-        
-
-
     }

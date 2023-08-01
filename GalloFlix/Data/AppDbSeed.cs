@@ -49,7 +49,7 @@ namespace GalloFlix.Data;
                     PhoneNumber = "1440028922",
                     PhoneNumberConfirmed = true,
                     EmailConfirmed =  true,
-                    ProfilePicture = "img/users/avatar.png"
+                    ProfilePicture = "/img/users/avatar.png"
                 }
             };
             foreach (var user in users)

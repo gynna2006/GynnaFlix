@@ -6,7 +6,6 @@ namespace GalloFlix.DataTransferObjects;
     {
         [Display(Name = "E-mail ou  Nome de Usuário")]
         [Required(ErrorMessage = "Por favor, informe seu e-mail ou  nome de usuário")]
-        
         public string Email { get; set; }
 
         [Display(Name = "Senha de acesso")]
